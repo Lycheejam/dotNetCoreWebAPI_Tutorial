@@ -66,5 +66,20 @@ namespace dotNetCoreWebAPI_Tutorial.Controllers {
 
             return NoContent();
         }
+
+        //タスクの削除
+        // DELETE: api/Todo/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id) {
+            var todoItem = await _context.TodoItems.FindAsync(id);
+            if (todoItem == null) {
+                return NotFound();
+            }
+
+            _context.TodoItems.Remove(todoItem);
+            await _context.SaveChangesAsync();
+
+            return todoItem;
+        }
     }
 }
