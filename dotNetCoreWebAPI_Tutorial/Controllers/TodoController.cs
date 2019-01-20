@@ -11,6 +11,7 @@ namespace dotNetCoreWebAPI_Tutorial.Controllers {
     public class TodoController : ControllerBase {
         private readonly TodoContext _context;
 
+        //DbContext
         public TodoController(TodoContext context) {
             _context = context;
 
@@ -22,12 +23,14 @@ namespace dotNetCoreWebAPI_Tutorial.Controllers {
             }
         }
         
+        //タスクのリスト呼び出し
         // GET: api/Todo
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems() {
             return await _context.TodoItems.ToListAsync();
         }
 
+        //タスク毎の呼び出し
         // GET: api/Todo/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TodoItem>> GetTodoItem(long id) {
