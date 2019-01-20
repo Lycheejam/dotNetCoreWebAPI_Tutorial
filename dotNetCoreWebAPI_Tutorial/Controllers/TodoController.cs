@@ -9,6 +9,11 @@ namespace dotNetCoreWebAPI_Tutorial.Controllers {
     [Route("api/[controller]")]
     [ApiController]
     public class TodoController : ControllerBase {
+        /*
+         * チュートリアル: ASP.NET Core MVC で Web API を作成する
+         * https://docs.microsoft.com/ja-jp/aspnet/core/tutorials/first-web-api?view=aspnetcore-2.2&tabs=visual-studio
+         */
+
         private readonly TodoContext _context;
 
         //DbContext
