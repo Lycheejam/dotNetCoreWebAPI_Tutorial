@@ -39,5 +39,15 @@ namespace dotNetCoreWebAPI_Tutorial.Controllers {
 
             return todoItem;
         }
+
+        //新規登録
+        // POST: api/Todo
+        [HttpPost]
+        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem) {
+            _context.TodoItems.Add(todoItem);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+        }
     }
 }
